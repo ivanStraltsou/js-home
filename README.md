@@ -3,10 +3,10 @@ js-home
 
 test homework
 
-Requirements: use jquery, backbone, bootstrap.css, requires(optional), your own plugins(feel free to add, but not abuse).
+Requirements: use jquery, backbone, bootstrap.css, requireJS(optional), your own plugins(feel free to add, but not abuse).
 
-Implement a boilerplate to create/edit and preview the list of users. You can search and navigate through the pages.
-You can use REST api(http://js-home.herokuapp.com/api/user) with randomly generated users, it also supports persistence (perform POST, PUT requests to update the list). DELETE is not supported, you can use reset to reset the list.
+Implement a boilerplate to create/edit and preview the list of users. Create search and pagination functionality.
+You can use REST api(http://js-home.herokuapp.com/api/user) with randomly generated users, it also supports persistence (perform POST, PUT requests to update the list). DELETE is not supported, you can use reset the full list.
 
 ```
 UserModel: {
@@ -18,10 +18,11 @@ UserModel: {
 }
 ```
 
-Full list: GET http://js-home.herokuapp.com/api/user
-User by id: GET http://js-home.herokuapp.com/api/user/-JUPBybqJPOfHFunaCcW - -JUPBybqJPOfHFunaCcW is ID
-Add user: POST http://js-home.herokuapp.com/api/user
-Reset the list: GET http://js-home.herokuapp.com/api/user/reset generates random user list
-Reset the list: GET http://js-home.herokuapp.com/api/user/reset?hard=true creates empty user list
+Full list: *GET* http://js-home.herokuapp.com/api/user
+User by id: *GET* http://js-home.herokuapp.com/api/user/-JUPBybqJPOfHFunaCcW - -JUPBybqJPOfHFunaCcW is ID
+Update user by id: *PUT* http://js-home.herokuapp.com/api/user/-JUPBybqJPOfHFunaCcW - -JUPBybqJPOfHFunaCcW is ID
+Add user: *POST* http://js-home.herokuapp.com/api/user
+Reset the list: *GET* http://js-home.herokuapp.com/api/user/reset generates random user list
+Reset the list: *GET* http://js-home.herokuapp.com/api/user/reset?hard=true creates empty user list
 
 In case of some service problems you can use localStorage or contact me in skype: putskoo.
