@@ -18,11 +18,11 @@ UserModel: {
 }
 ```
 
-Full list: *GET* http://js-home.herokuapp.com/api/user
-User by id: *GET* http://js-home.herokuapp.com/api/user/-JUPBybqJPOfHFunaCcW - -JUPBybqJPOfHFunaCcW is ID
-Update user by id: *PUT* http://js-home.herokuapp.com/api/user/-JUPBybqJPOfHFunaCcW - -JUPBybqJPOfHFunaCcW is ID
-Add user: *POST* http://js-home.herokuapp.com/api/user
-Reset the list: *GET* http://js-home.herokuapp.com/api/user/reset generates random user list
-Reset the list: *GET* http://js-home.herokuapp.com/api/user/reset?hard=true creates empty user list
+1. Full list: *GET* http://js-home.herokuapp.com/api/user
+2. User by id: *GET* http://js-home.herokuapp.com/api/user/-JUPBybqJPOfHFunaCcW - -JUPBybqJPOfHFunaCcW is ID
+3. Update user by id: *PUT* http://js-home.herokuapp.com/api/user/-JUPBybqJPOfHFunaCcW - -JUPBybqJPOfHFunaCcW is ID
+4. Add user: *POST* http://js-home.herokuapp.com/api/user
+5. Reset the list: *GET* http://js-home.herokuapp.com/api/user/reset generates random user list
+6. Reset the list: *GET* http://js-home.herokuapp.com/api/user/reset?hard=true creates empty user list
 
 In case of some service problems you can use localStorage or contact me in skype: putskoo.
