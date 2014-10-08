@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>User manager</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <script type="text/javascript" src="js/libs/underscore.js" ></script>
+    <script type="text/javascript" src="js/libs/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="js/libs/bootstrap/tooltip.js"></script>
+    <script type="text/javascript" src="js/libs/backbone.js"></script>
+    <script type="text/javascript" src="js/libs/backbone/backbone.localStorage.js"></script>
+
+</head>
+<body>
+
+<div class="container" id="app" >
+    <h3>User manager</h3>
+    <div class="row" >
+        <div class="col-md-4" >
+            <form role="form" >
+
+                <div class="form-group" >
+                    <label for="user-name">Name</label>
+                    <input type="text" class="form-control data-user-inputs" id="user-name" placeholder="Enter user name">
+                </div>
+
+                <div class="form-group" >
+                        <label for="user-age">Age</label>
+                        <input type="text" class="form-control data-user-inputs" id="user-age" placeholder="Enter user age">
+                </div>
+
+                <div class="form-group" >
+                    <label for="user-email">Email</label>
+                    <input type="email" class="form-control data-user-inputs" id="user-email" placeholder="Enter user email">
+                </div>
+
+                <div class="form-group">
+                    <label for="user-info">Info</label>
+                    <textarea class="form-control data-user-inputs" id="user-info" placeholder="Enter user info"></textarea>
+                </div>
+
+                <div class="form-group" >
+                    <input type="button" id="add-button" class="btn" value="Add" />
+                    <input type="button" id="edit-button" class="btn" value="Update" />
+                    <input type="button" id="reset-button" class="btn" value="Reset" />
+                    <input type="button" id="delete-button" class="btn" value="Delete" />
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-8">
+
+            <div class="row">
+                <div class="col-md-6" >
+
+                    <form role="form" >
+                        <div class="form-group" >
+                            <label for="user-search" >Search</label>
+                            <input class="form-control" type="text" id="user-search" placeholder="Search" >
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-md-6">
+                    <form role="form" >
+                        <div class="form-group" >
+                           <label for="user-records-per-page">Records per page</label>
+                           <select id="user-records-per-page"  class="form-control" >
+                           </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" >
+                    <table id="users-table" class="table table-bordered " >
+                        <thead>
+                        <tr>
+                            <th class="sort-title" data-sort="pid" >Id</th>
+                            <th class="sort-title" data-sort="name" >Name</th>
+                            <th class="sort-title" data-sort="age" >Age</th>
+                            <th class="sort-title" data-sort="email" >Email</th>
+                            <th class="sort-title" data-sort="info" >Description</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="col-md-12">
+                    <ul id="paginator" class="pagination" >
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="test-block" >
+    <p>Clear local storage and add test data <button id="set-test-data" >Run</button> </p>
+</div>
+
+<script id="user-record" type="text/template" >
+        <td><%= pid %></td>
+        <td><%= name %></td>
+        <td><%= age %></td>
+        <td><%= email %></td>
+        <td><%= info %></td>
+</script>
+
+<script id="pagination-item" type="text-template">
+    <li><a href="#" data-num="<%= num + 1 %>" ><%= num + 1 %></a></li>
+</script>
+
+<script type="text/javascript" src="js/app/app.js"></script>
+<script type="text/javascript" src="js/app/models/user.js"></script>
+<script type="text/javascript" src="js/app/collections/users.js"></script>
+<script type="text/javascript" src="js/app/views/app.js"></script>
+<script type="text/javascript" src="js/app/views/user.js"></script>
+<script typy="text/javascript" src="js/app/views/users.js"></script>
+
+
+<script type="text/javascript" >
+    app.testData=[{name:"Airi Satou", info:"Accountant", age:"33", email:"AiriSatou@gmail.com"},
+        {name:"Angelica Ramos",	info:"Chief Executive Officer", age:"47", email:"AngelicaRamos@gmail.com"},
+        {name:"Ashton Cox", info:"Junior Technical Author",age:"66",email:"AshtonCox@gmail.com"},
+        {name:"Bradley Greer", info:"Software Engineer", age:"41", email:"BradleyGreer@gmail,com"},
+        {name:"Brenden Wagner", info:"Software Engineer", age:"28", email:"BrendenWagner@gmail.com" },
+        {name:"Brielle Williamson", info:"Integration Specialist", age:"61",email:"BrielleWilliamson@gmail.com"},
+        {name:"Bruno Nash", info:"Software Engineer", age:"38", email:"BrunoNash@gmail.com"},
+        {name:"Caesar Vance", info:"Pre-Sales Support", age:"21", email:"CaesarVance@gmail.com"},
+        {name:"Cara Stevens", info:"Sales Assistant", age:"46", email:"CaraStevens@gmail.com"},
+        {name:"Cedric Kelly", info:"Senior Javascript Developer",age:"22", email:"CedricKelly@gmail.com"},
+        {name:"Charde Marshall", info:"Regional Director",age:"36",email:"ChardeMarshall@gmail.com"},
+        {name:"Colleen Hurst", info:"Javascript Developer",age:"39",email:"ColleenHurst@gmail.com"},
+        {name:"Dai Rios", info:"Personnel Lead",age:"35",email:"DaiRios@gmail.com"},
+        {name:"Donna Snider", info:"Customer Support",age:"27",email:"DonnaSnider@gmail.com"},
+        {name:"Doris Wilder", info:"Sales Assistant",age:"23",email:"DorisWilder@gmail.com"},
+        {name:"Finn Camacho", info:"Support Engineer",age:"47",email:"FinnCamacho@gmail.com"},
+        {name:"Fiona Green", info:"Chief Operating Officer",age:"48",email:"FionaGreen@gmail.com"},
+        {name:"Garrett Winters", info:"Accountant",age:"63",email:"Garrett Winters@gmail.com"},
+        {name:"Gavin Cortez", info:"Team Leader",age:"22",email:"Gavin Cortez@gmail.com"},
+        {name:"Gavin Joyce", info:"Developer",age:"42",email:"Gavin Joyce@gmail.com"},
+        {name:"Gloria Little", info:"Systems Administrator",age:"59",email:"GloriaLittle@gmail.com"},
+        {name:"Haley Kennedy", info:"Senior Marketing Designer",age:"43",email:"HaleyKennedy@gmail.com"},
+        {name:"Hermione Butler", info:"Regional Director",age:"47",email:"HermioneButler@gmail.com"},
+        {name:"Herrod Chandler", info:"Sales Assistant", age:"59",email:"HerrodChandler@gmail.com"},
+        {name:"Hope Fuentes", info:"Secretary",	age:"41",email:"HopeFuentes@gmail.com"},
+        {name:"Howard Hatfield", info:"Office Manager",	age:"51",email:"HowardHatfield@gmail.com"},
+        {name:"Jackson Bradshaw", info:"Director",	age:"65",email:"JacksonBradshaw@gmail.com"},
+        {name:"Jena Gaines",info:"Office Manager",	age:"30",email:"JenaGaine@gmail.com"},
+        {name:"Jenette Caldwell",info:"Development Lead", age:"30",	email:"JenetteCaldwell@gmail.com"},
+        {name:"Jennifer Acosta",info:"Junior Javascript Developer", age:"43",	email:"JenniferAcosta@gmail.com"},
+        {name:"Jennifer Chang",info:"Regional Director",age:"28",email:"JenniferChang@gmail.com"},
+        {name:"Jonas Alexander",info:"Developer",age:"30",email:"JonasAlexander@gmail.com"},
+        {name:"Lael Greer",info:"Systems Administrator", age:"21",email:"LaelGreer@gmail.com"},
+        {name:"Martena Mccray",info:"Post-Sales support", age:"46",email:"MartenaMccray@gmail.com"},
+        {name:"Michael Bruce",info:"Javascript Developer", age:"29",email:"MichaelBruce@gmail.com"},
+        {name:"Michael Silva",info:"Marketing Designer", age:"66",email:"MichaelSilva@gmail.com"},
+        {name:"Michelle House",info:"Integration Specialist", age:"37",email:"Michelle@gmail.com"},
+        {name:"Olivia Liang",info:"Support Engineer	Singapore", age:"64",email:"OliviaLiang@gmail.com"},
+        {name:"Paul Byrd",info:"Chief Financial Officer (CFO)",	age:"64",email:"PaulByrd@gmail.com"},
+        {name:"Prescott Bartlett",info:"Technical Author",	age:"27",email:"PrescottBartlett@gmail.com"},
+        {name:"Quinn Flynn",info:"Support Lead	Edinburgh",	age:"22",email:"QuinnFlynn@gmail.com"},
+        {name:"Rhona Davidson",info:"Integration Specialist",	age:"55",email:"RhonaDavidson@gmail.com"},
+        {name:"Sakura Yamamoto",info:"Support Engineer", age:"37",email:"SakuraYamamoto@gmail.com"},
+        {name:"Serge Baldwin",info:"Data Coordinator",	age:"64",email:"SergeBaldwin@gmail.com"},
+        {name:"Shad Decker", info:"Regional Director",	age:"51",email:"ShadDecker@gmail.com"},
+        {name:"Shou Itou", info:"Regional Marketing",	age:"20",email:"ShouItou@gmail.com"},
+        {name:"Sonya Frost", info:"Software Engineer",	age:"23",email:"SonyaFrost@gmail.com"},
+        {name:"Suki Burks", info:"Developer",age:"53",email:"SukiBurks@gmail.com"},
+        {name:"Tatyana Fitzpatrick", info:"Regional Director",	age:"19",email:"TatyanaFitzpatrick@gmail.com"},
+        {name:"Thor Walton", info:"Developer",age:"61",email:"ThorWalton@gmail.com"},
+        {name:"Tiger Nixon", info:"System Architect", age:"61",email:"TigerNixo@gmail.com"},
+        {name:"Timothy Mooney", info:"Office Manager",age:"37",email:"TimothyMooney@gmail.com"},
+        {name:"Unity Butler", info:"Marketing Designer",age:"47",email:"UnityButler@gmail.com"},
+        {name:"Vivian Harrell", info:"Financial Controller",age:"62",email:"VivianHarrell@gmail.com"},
+        {name:"Yuri Berry", info:"Chief Marketing Officer (CMO)",age:"40", email:"YuriBerry@gmail.com"},
+        {name:"Zenaida Frank", info:"Software Engineer",age:"63",email:"ZenaidaFrank@gmail.com"},
+        {name:"Zorita Serrano", info:"Software Engineer", age:"56", email:"ZoritaSerrano@gmail.com"}];
+</script>
+
+
+<script type="text/javascript">
+    $(function(){
+
+        // App start
+        new app.views.appView();
+
+    });
+</script>
+
+</body>
+</html>

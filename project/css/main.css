@@ -1,0 +1,21 @@
+.sort-title{
+    cursor:pointer;
+}
+
+.asc:after{
+    content:"↑"
+}
+
+.desc:after{
+    content:"↓"
+}
+
+.empty-cell{
+    text-align:center;
+}
+
+#test-block{
+    position:absolute;
+    top:0;
+    left:0;
+}
